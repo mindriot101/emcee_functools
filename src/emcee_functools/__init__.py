@@ -19,3 +19,9 @@ class Fixed(object):
 
     def __str__(self):
         return '<Fixed value {value}>'.format(value=self.value)
+
+
+class Varying(object):
+    '''
+    Placeholder for varying parameter
+    '''
