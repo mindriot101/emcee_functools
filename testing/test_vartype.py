@@ -11,6 +11,11 @@ def test_fixed_can_contain_a_value(fixed):
     assert fixed.value == 5
 
 
+def test_fixed_need_not_have_a_value():
+    f = Fixed()
+    assert f.value is None
+
+
 def test_fixed_value_does_not_change(fixed):
     with pytest.raises(ValueError) as err:
         fixed.value += 5

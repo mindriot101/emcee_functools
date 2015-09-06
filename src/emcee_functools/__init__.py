@@ -3,7 +3,7 @@ class Fixed(object):
     Class describing a parameter which does not vary
     '''
 
-    def __init__(self, value):
+    def __init__(self, value=None):
         self._value = value
 
     @property
