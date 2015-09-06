@@ -13,3 +13,6 @@ class Fixed(object):
     @value.setter
     def value(self, *args, **kwargs):
         raise ValueError("Fixed values cannot change")
+
+    def __add__(self, other):
+        raise ValueError("Fixed values cannot change")
