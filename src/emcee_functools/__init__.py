@@ -34,8 +34,7 @@ def func_signature(**param_mapping):
     '''
     '''
     def decorator(fn):
-        @wraps(fn)
-        def inner(*args, **kwargs):
+        def inner(p, **kwargs):
             pass
         return inner
     return decorator
