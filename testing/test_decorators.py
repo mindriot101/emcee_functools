@@ -13,8 +13,4 @@ def test_parameter_manipulation():
 
 
 def test_values():
-    assert fn([1, 2], a=3) == {
-        'a': 3,
-        'b': 1,
-        'c': 2,
-    }
+    assert fn([1, 2], a=3) == {'a': 3, 'b': 1, 'c': 2,}
