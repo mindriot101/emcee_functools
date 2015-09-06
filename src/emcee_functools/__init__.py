@@ -36,10 +36,29 @@ def func_signature(**param_mapping):
 
     def decorator(fn):
 
-        def inner(p, **kwargs):
-            return fn(a=p[0], b=kwargs['b'])
+        varying, fixed = [], []
+        for key in param_mapping:
+            value = param_mapping[key]
+            if isinstance(value, Fixed):
+                fixed.append(key)
+            else:
+                varying.append(key)
 
-        inner.__doc__ = fn.__doc__
+        varying.sort()
+        fixed.sort()
+
+        fn_args = ', '.join(fixed)
+        fn_code = 'def inner(p, {0}):\n'.format(fn_args)
+        fn_code += '    return fn('
+        args_entries = [
+            '{name}=p[{i}]'.format(name=arg,
+                                   i=i) for (i, arg) in enumerate(varying)
+        ]
+        kwargs_entries = ['{name}={name}'.format(name=arg) for arg in fixed]
+        fn_code += ', '.join(args_entries + kwargs_entries) + ')'
+
+        exec(fn_code, locals(), globals())
+
         return inner
 
     return decorator
