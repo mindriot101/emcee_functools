@@ -36,5 +36,7 @@ def func_signature(**param_mapping):
     def decorator(fn):
         def inner(p, **kwargs):
             pass
+
+        inner.__doc__ = fn.__doc__
         return inner
     return decorator
