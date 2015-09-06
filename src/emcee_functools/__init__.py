@@ -1,4 +1,4 @@
-from functools import wraps
+from collections import OrderedDict
 
 
 class Fixed(object):
@@ -37,7 +37,7 @@ def func_signature(**param_mapping):
     def decorator(fn):
 
         def inner(p, **kwargs):
-            pass
+            return fn(a=p[0], b=kwargs['b'])
 
         inner.__doc__ = fn.__doc__
         return inner
