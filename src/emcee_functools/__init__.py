@@ -1,3 +1,6 @@
+from functools import wraps
+
+
 class Fixed(object):
     '''
     Class describing a parameter which does not vary
@@ -25,3 +28,14 @@ class Varying(object):
     '''
     Placeholder for varying parameter
     '''
+
+
+def func_signature(**param_mapping):
+    '''
+    '''
+    def decorator(fn):
+        @wraps(fn)
+        def inner(*args, **kwargs):
+            pass
+        return inner
+    return decorator
