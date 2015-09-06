@@ -16,3 +16,6 @@ class Fixed(object):
 
     def __add__(self, other):
         raise ValueError("Fixed values cannot change")
+
+    def __str__(self):
+        return '<Fixed value {value}>'.format(value=self.value)
